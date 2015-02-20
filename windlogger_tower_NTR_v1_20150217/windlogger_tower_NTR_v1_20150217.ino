@@ -1,3 +1,4 @@
+//this is a test from small pc
 #define COPTER  //set to TOWER for a tower; anything else will be interpreted as the copter
 #define IDENTIFIER 0
 
