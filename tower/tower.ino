@@ -33,7 +33,6 @@ void setup()
 }
 
 String readDS2(void)
-// this could be cleaned up to query the device instead of using delay.
 {
   ds2.sendCommand(myCommand);
   delay(250);          
@@ -60,30 +59,32 @@ String makePrettyGps(void)
 
 void loop()
 {
-//test plan:
-/* need to verify that the time is set and kept
-	// cold start (inside)
-		// upload code. unplug USB
-		// wait 10 seconds plug USB back into PC and open serial
-		// results: prints the same GPS time twice with different DS-2 values.
-	// warm start (from inside to outside)
-		// keep code running per cold start (inside) test plan.	
-		// results: prints one GPS reading and one DS-2 reading per second.
-	// cold start (outside)
-		// upload code. unplug USB
-		// wait 10 seconds plug USB back into PC and open serial
-		// results0: sets GPS time with one sat. prints one GPS reading and one DS-2 reading per second.
-		// concerns: printing is less precise when the GPS does not have a fix.
-		// results1: same as results0. GPS needs time to aquire fix.
-	// warm start (from outside to inside)
-		// with setup remaining from cold start (outside) walk inside.
-		// verify fix is lost.
-		// results: once fix is lost prints the same GPS time twice with different DS-2 values.
-	// added return statement below to check again for lastNMEA
-		// results: using cold start (inside) test method prints one GPS with one DS-2 reading. 
-		// 			hangs just as fix transitions to true. otherwise seems good.
-		//			continues to work using warm start (from outside to inside) method.
-	*/
+	
+/* test plan:
+	need to verify that the time is set and kept
+		cold start (inside)
+			upload code. unplug USB
+			wait 10 seconds plug USB back into PC and open serial
+			results: prints the same GPS time twice with different DS-2 values.
+		warm start (from inside to outside)
+			keep code running per cold start (inside) test plan.	
+			results: prints one GPS reading and one DS-2 reading per second.
+		cold start (outside)
+			upload code. unplug USB
+			wait 10 seconds plug USB back into PC and open serial
+			results0: sets GPS time with one sat. prints one GPS reading and one DS-2 reading per second.
+			concerns: printing is less precise when the GPS does not have a fix.
+			results1: same as results0. GPS needs time to aquire fix.
+		warm start (from outside to inside)
+			with setup remaining from cold start (outside) walk inside.
+			verify fix is lost.
+			results: once fix is lost prints the same GPS time twice with different DS-2 values.
+		added return statement below to check again for lastNMEA
+			results: using cold start (inside) test method prints one GPS with one DS-2 reading. 
+					hangs just as fix transitions to true. otherwise seems good.
+					continues to work using warm start (from outside to inside) method.
+*/
+	
 	GPS.read();
 	if (GPS.newNMEAreceived()) {
 		if(!GPS.parse(GPS.lastNMEA()))
