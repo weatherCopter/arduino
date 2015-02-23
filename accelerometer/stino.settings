@@ -1,0 +1,10 @@
+{
+    "arduino_folder": "C:\\Program Files (x86)\\Arduino", 
+    "baudrate": 9, 
+    "board": 21, 
+    "build_folder": "C:\\Users\\nrose\\nathantylerrose\\GitHub\\arduino\\build", 
+    "full_compilation": true, 
+    "platform": 1, 
+    "platform_name": "Arduino AVR Boards", 
+    "serial_port": 9
+}
