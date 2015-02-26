@@ -21,6 +21,7 @@ const uint8_t SHT15_CLK_COVER =  6;              // SHT serial clock
 const uint8_t SHT15_DATA_noCOVER =  3;              // SHT serial data
 const uint8_t SHT15_CLK_noCOVER =  6;              // SHT serial clock
 const uint32_t TRHSTEP   = 5000UL;       // Sensor query period
+// We should clean this up
 Sensirion sht75_cover = Sensirion(SHT75_DATA_COVER, SHT75_CLK_COVER);
 Sensirion sht75_noCover = Sensirion(SHT75_DATA_noCOVER, SHT75_CLK_noCOVER);
 Sensirion sht15_cover = Sensirion(SHT15_DATA_COVER, SHT15_CLK_COVER);
